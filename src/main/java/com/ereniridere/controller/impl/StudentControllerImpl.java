@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ereniridere.controller.IStudentController;
-import com.ereniridere.entites.Student;
+import com.ereniridere.dto.DtoStudent;
+import com.ereniridere.dto.DtoStudentIU;
 import com.ereniridere.services.IStudentService;
 
 @RestController
@@ -26,19 +27,19 @@ public class StudentControllerImpl implements IStudentController {
 
 	@PostMapping(path = "/save")
 	@Override
-	public Student saveStudent(@RequestBody Student student) {
-		return studentService.saveStudent(student);
+	public DtoStudent saveStudent(@RequestBody DtoStudentIU dtoStudent) {
+		return studentService.saveStudent(dtoStudent);
 	}
 
 	@GetMapping(path = "/all")
 	@Override
-	public List<Student> getAllStudent() {
+	public List<DtoStudent> getAllStudent() {
 		return studentService.getAllStudents();
 	}
 
 	@GetMapping(path = "/{id}")
 	@Override
-	public Student getStudentById(@PathVariable(name = "id") Integer id) {
+	public DtoStudent getStudentById(@PathVariable(name = "id") Integer id) {
 		return studentService.getStudentById(id);
 	}
 
@@ -50,8 +51,9 @@ public class StudentControllerImpl implements IStudentController {
 
 	@PutMapping(path = "/{id}")
 	@Override
-	public Student updateStudentById(@PathVariable(name = "id") Integer id, @RequestBody Student updateStudent) {
-		return studentService.updateStudentById(id, updateStudent);
+	public DtoStudent updateStudentById(@PathVariable(name = "id") Integer id,
+			@RequestBody DtoStudentIU dtoUpdateStudent) {
+		return studentService.updateStudentById(id, dtoUpdateStudent);
 	}
 
 }

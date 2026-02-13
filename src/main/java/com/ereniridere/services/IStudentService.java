@@ -2,18 +2,19 @@ package com.ereniridere.services;
 
 import java.util.List;
 
-import com.ereniridere.entites.Student;
+import com.ereniridere.dto.DtoStudent;
+import com.ereniridere.dto.DtoStudentIU;
 
 public interface IStudentService {
 
-	public Student saveStudent(Student student);
+	public DtoStudent saveStudent(DtoStudentIU dtoStudent);
 
-	public List<Student> getAllStudents();
+	public List<DtoStudent> getAllStudents();
 
-	public Student getStudentById(Integer id);
+	public DtoStudent getStudentById(Integer id);
 
 	public void deleteStudentById(Integer id);
 
-	public Student updateStudentById(Integer id, Student updateStudent);
+	public DtoStudent updateStudentById(Integer id, DtoStudentIU dtoUpdateStudent);
 
 }
