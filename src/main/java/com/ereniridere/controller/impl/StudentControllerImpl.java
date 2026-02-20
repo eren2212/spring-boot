@@ -17,6 +17,8 @@ import com.ereniridere.dto.DtoStudent;
 import com.ereniridere.dto.DtoStudentIU;
 import com.ereniridere.services.IStudentService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/rest/api/student")
 
@@ -27,7 +29,7 @@ public class StudentControllerImpl implements IStudentController {
 
 	@PostMapping(path = "/save")
 	@Override
-	public DtoStudent saveStudent(@RequestBody DtoStudentIU dtoStudent) {
+	public DtoStudent saveStudent(@RequestBody @Valid DtoStudentIU dtoStudent) {
 		return studentService.saveStudent(dtoStudent);
 	}
 
