@@ -52,7 +52,7 @@ public class StudentServiceImpl implements IStudentService {
 	@Override
 	public DtoStudent getStudentById(Integer id) {
 		DtoStudent dtoStudent = new DtoStudent();
-		Optional<Student> optional = studentRepository.findById(id);
+		Optional<Student> optional = studentRepository.findByIDAbi(id);
 
 		if (optional.isPresent()) {
 			Student student = optional.get();
@@ -78,19 +78,18 @@ public class StudentServiceImpl implements IStudentService {
 		Optional<Student> optional = studentRepository.findById(id);
 		DtoStudent dtoStudent = new DtoStudent();
 
-		
 		if (optional.isPresent()) {
 			Student dbStudent = optional.get();
-			
+
 			dbStudent.setFirstName(dtoUpdateStudent.getFirstName());
 			dbStudent.setLastName(dtoUpdateStudent.getLastName());
 			dbStudent.setBirthOfDate(dtoUpdateStudent.getBirthOfDate());
-			
+
 			Student updateedStudent = studentRepository.save(dbStudent);
-			
-			BeanUtils.copyProperties(updateedStudent,dtoStudent);
+
+			BeanUtils.copyProperties(updateedStudent, dtoStudent);
 			return dtoStudent;
-	
+
 		}
 
 		return null;
